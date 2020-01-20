@@ -10,8 +10,8 @@ class Tree(Base):
     __tablename__ = 'tree'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    genus = Column(String(250), nullable=False)
-    location = Column(String(250), nullable=False)
+    genus = Column(String(250), nullable=True)
+    location = Column(String(250), nullable=True)
 
 
 engine = create_engine(

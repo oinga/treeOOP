@@ -32,11 +32,24 @@ class Trees:
         session.add(newTree)
         session.commit()
 
+    def read_tree(self):
+        r = select(
+                   [Tree]
+                   ).where(
+                           Tree.location == self.location
+                           )
+        rs = session.execute(r)
+        tree = rs.fetchall()
+        return tree
+
 
 def go():
     try:
-        t1 = Trees("Oak", "Piedmont Park")
-        t1.insert_tree()
+        t1 = Trees("Fairy Tree", "Junk Station")
+        Trees.insert_tree(t1)
+        location = t1.location
+        find_tree = Trees.read_tree(location)
+        print(find_tree)
     except():
         print("an error has occurred")
 
